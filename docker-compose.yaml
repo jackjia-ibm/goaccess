@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  goaccess:
+    build:
+      context: https://github.com/jackjia-ibm/goaccess.git
+      dockerfile: Dockerfile-geoip
+    container_name: goaccess
+    restart: unless-stopped
+    ports:
+      - "7890"
+    volumes:
+      - ${GOACCESS_HOME}/data:/srv/data
+      - ${GOACCESS_HOME}/html:/srv/report
+      - ${GOACCESS_HOME}/logs:/srv/logs
